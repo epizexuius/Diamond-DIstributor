@@ -62,23 +62,6 @@ async function deployDiamond() {
   console.log();
   console.log("Diamond deployed:", diamond.address);
 
-  //Interact with the diamond to initialize Distributor
-  const distributorFacet = await ethers.getContractAt(
-    "DistributorFacet",
-    diamond.address
-  );
-
-  const stake1 = await distributorFacet.getBeneficiary1Stake();
-  const stake2 = await distributorFacet.getBeneficiary2Stake();
-  console.log("Stake1 is", stake1);
-  console.log("Stake2 is", stake2);
-
-  await distributorFacet.receiveAndDistributePayment({ value: toWei(10) });
-  const partner1FinalBalance = await partner1.getBalance();
-  const partner2FinalBalance = await partner2.getBalance();
-
-  console.log("Partner1 final balance is", fromWei(partner1FinalBalance));
-  console.log("Partner2 final balance is", fromWei(partner2FinalBalance));
   // returning the address of the diamond
   return diamond.address;
 }

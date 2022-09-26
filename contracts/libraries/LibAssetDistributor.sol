@@ -5,9 +5,11 @@ library LibAssetDistributor {
     bytes32 constant DISTRIBUTOR_STORAGE_POSITION = keccak256("distributor_storage_position");
 
     /**@notice For 2 benficiaries we only need one variable to keep track of both stakes
-        x and (100 - x) but for simplicity right now this optimization has been ignored and  
-        considering that I plan to implement it for any amount of beneficiaries and respective stakes
-        that can be updated using another DiamondFacet. The uint256 has however been converted to uint8 for better struct packing.*/
+        x and (100 - x) but for simplicity right now this optimization has been foregone 
+        considering that I plan to implement it for any amount of beneficiaries 
+        and respective stakes that can be updated using another DiamondFacet. 
+        The uint256 has however been converted to uint8 for better struct packing.*/
+
     struct DistributorStorage {
         uint8 beneficiary1Stake;
         uint8 beneficiary2Stake;
